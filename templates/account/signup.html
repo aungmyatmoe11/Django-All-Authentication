@@ -1,0 +1,29 @@
+{% load static %}
+<!-- templates/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/allauth.css' %}">
+
+</head>
+<body>
+    <h2>Register</h2>
+<form method="post" action="{% url 'account_signup' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+</form>
+<h3>Or register using a social account</h3>
+            {% load socialaccount %}
+
+<li><a href="{% provider_login_url 'google' %}">Google</a></li>
+        <li><a href="{% provider_login_url 'facebook' %}">Facebook</a></li>
+        <li><a href="{% provider_login_url 'github' %}">GitHub</a></li>
+        <li><a href="{% provider_login_url 'twitter' %}">Twitter</a></li>
+        <li><a href="{% provider_login_url 'linkedin_oauth2' %}">LinkedIn</a></li>
+</body>
+</body>
+</html>

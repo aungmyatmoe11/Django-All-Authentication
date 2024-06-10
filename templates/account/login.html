@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/allauth.css' %}">
+</head>
+<body>
+    <h2>Login</h2>
+    <form method="post" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    <h3>Or login with:</h3>
+    <ul>
+        {% load socialaccount %}
+        <li><a href="{% provider_login_url 'google' %}">Google</a></li>
+        <li><a href="{% provider_login_url 'facebook' %}">Facebook</a></li>
+        <li><a href="{% provider_login_url 'github' %}">GitHub</a></li>
+        <li><a href="{% provider_login_url 'twitter' %}">Twitter</a></li>
+        <li><a href="{% provider_login_url 'linkedin_oauth2' %}">LinkedIn</a></li>
+    </ul>
+
+    <a href="{% url 'account_signup' %}">Go to register</a>
+
+</body>
+</html>
